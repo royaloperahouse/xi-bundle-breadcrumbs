@@ -1,10 +1,15 @@
 {% if breadcrumbs|length %}
-  <ul id="xi-breadcrumbs">
+  <ul id="xi-breadcrumbs" vocab="http://schema.org/" typeof="BreadcrumbList">
     {% for bc in breadcrumbs %}
       {% if loop.last or not bc.url %}
         <li>{{ bc.label|trans }}</li>
       {% else %}
-        <li><a href="{{ bc.url }}">{{ bc.label|trans }}</a></li>
+        <li property="itemListElement" typeof="ListItem">
+          <a href="{{ bc.url }}" property="item" typeof="WebPage">
+            <span property="name">{{ bc.label|trans }}</span>
+          </a>
+        </li>
+        <meta property="position" content="{{ loop.index }}">
       {% endif %}
     {% endfor %}
   </ul>
