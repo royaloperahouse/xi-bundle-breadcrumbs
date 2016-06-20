@@ -8,8 +8,8 @@
           <a href="{{ bc.url }}" property="item" typeof="WebPage">
             <span property="name">{{ bc.label|trans }}</span>
           </a>
+          <meta property="position" content="{{ loop.index }}">
         </li>
-        <meta property="position" content="{{ loop.index }}">
       {% endif %}
     {% endfor %}
   </ul>
